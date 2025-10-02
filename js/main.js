@@ -4,7 +4,7 @@ async function getRandomArticle() {
 
     title.innerHTML = "Завантаження";
     text.innerHTML = '';
-    maxLength = 500
+    maxLength = 400
 
     try {
         const res = await fetch("https://uk.wikipedia.org/api/rest_v1/page/random/summary");
