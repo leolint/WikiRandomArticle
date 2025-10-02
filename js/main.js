@@ -4,6 +4,7 @@ async function getRandomArticle() {
 
     title.innerHTML = "Завантаження";
     text.innerHTML = '';
+    maxLength = 500
 
     try {
         const res = await fetch("https://uk.wikipedia.org/api/rest_v1/page/random/summary");
@@ -11,6 +12,10 @@ async function getRandomArticle() {
 
         title.innerHTML = data.title
         text.innerHTML = data.extract
+
+        if(text.innerHTML.length > maxLength) {
+            text.innerHTML = text.innerHTML.slice(0 , maxLength) + '...'
+        }
     } catch (error) {
         title.innerHTML = 'Виникла помилка, спробуйте ще раз'
         console.log(error);
